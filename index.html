@@ -8,7 +8,7 @@
   <link rel="icon" type="image/x-icon" href="/favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;1,400&family=Noto+Sans:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,600;1,400&family=Noto+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg:           #F5F0EB;
@@ -22,6 +22,8 @@
       --accent-soft:  #EAE4F0;
       --teal:         #4A8C7A;
       --teal-soft:    #C5D8D1;
+      --rose:         #C24A4A;
+      --rose-soft:    #F2DCE0;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -49,10 +51,7 @@
     h1, h2, h3 { font-family: 'Noto Serif', serif; }
 
     /* Lang toggle */
-    .lang-toggle {
-      display: flex;
-      gap: 6px;
-    }
+    .lang-toggle { display: flex; gap: 6px; }
 
     .lang-btn {
       background: transparent;
@@ -184,6 +183,79 @@
     .d3 { animation-delay: 0.4s; }
     .d4 { animation-delay: 0.55s; }
 
+    /* What's new banner */
+    .whats-new {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 24px 40px;
+    }
+
+    .whats-new-inner {
+      background: linear-gradient(135deg, var(--accent) 0%, #4A3A5C 100%);
+      border-radius: 20px;
+      padding: 36px 40px;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      color: #F5F0EB;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .whats-new-inner::after {
+      content: '';
+      position: absolute;
+      right: -40px; top: -40px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .wn-version {
+      font-family: 'Noto Serif', serif;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin-bottom: 8px;
+    }
+
+    .wn-title {
+      font-family: 'Noto Serif', serif;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+
+    .wn-list {
+      font-size: 0.84rem;
+      line-height: 1.8;
+      opacity: 0.85;
+      font-weight: 300;
+    }
+
+    .wn-pixel-art {
+      flex-shrink: 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .wn-glyph {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    @media (max-width: 700px) {
+      .whats-new-inner { flex-direction: column; padding: 28px 24px; gap: 24px; }
+      .wn-pixel-art { order: -1; }
+    }
+
     /* Sections */
     .section { max-width: 1060px; margin: 0 auto; padding: 80px 24px; }
 
@@ -245,9 +317,26 @@
     .fi-purple { background: var(--accent-soft); }
     .fi-teal   { background: var(--teal-soft); }
     .fi-warm   { background: #EDE3D9; }
+    .fi-rose   { background: var(--rose-soft); }
 
     .feature-card h3 { font-size: 1rem; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 8px; }
     .feature-card p  { font-size: 0.86rem; color: var(--text-soft); line-height: 1.65; max-width: none; }
+
+    /* New badge */
+    .badge-new {
+      display: inline-block;
+      font-family: 'Noto Sans', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--teal);
+      color: #F5F0EB;
+      padding: 2px 7px;
+      border-radius: 5px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
 
     /* Setup */
     .how-grid {
@@ -433,6 +522,125 @@
     <p class="hero-note fu d4" data-sv>Gratis · Android 8.0+ · Din data stannar på enheten</p>
   </div>
 
+  <!-- What's new in 0.95 -->
+  <div class="whats-new">
+    <div class="whats-new-inner">
+      <div>
+        <div class="wn-version" data-en>What's new</div>
+        <div class="wn-version" data-sv>Nyheter</div>
+        <div class="wn-title" data-en>Version 0.95</div>
+        <div class="wn-title" data-sv>Version 0.95</div>
+        <div class="wn-list" data-en>
+          Design refresh with new icon system · Animated exercise and treat low icons ·
+          Sleep card with compression low detection · Separate alarm thresholds ·
+          Exercise response tracking · Improved overnight analysis
+        </div>
+        <div class="wn-list" data-sv>
+          Ny design med nytt ikonsystem · Animerade tränings- och behandla-lågt-ikoner ·
+          Sömnkort med kompressionslåg-detektering · Separata larmtröskelvärden ·
+          Träningsrespons · Förbättrad nattanalys
+        </div>
+      </div>
+      <div class="wn-pixel-art">
+        <!-- Breakfast -->
+        <div class="wn-glyph" style="background:rgba(255,255,255,0.1);">
+          <svg viewBox="0 0 16 16" width="28" height="28" style="image-rendering:pixelated;">
+            <path d="M2,8h12v1h-12zM2,9h1v3h-1zM13,9h1v3h-1zM3,12h10v1h-10z" fill="#5C4A6E"/>
+            <path d="M3,9h10v3h-10z" fill="#FFF"/>
+            <path d="M3,9h10v1h-10z" fill="#FCE8B8"/>
+            <path d="M4,9h2v2h-2zM7,9h2v2h-2zM10,9h2v2h-2z" fill="#C8A060"/>
+            <path d="M11,6h2v2h-2zM12,7h1v3h-1z" fill="#9B8FA0"/>
+          </svg>
+        </div>
+        <!-- Lunch -->
+        <div class="wn-glyph" style="background:rgba(255,255,255,0.08);">
+          <svg viewBox="0 0 16 16" width="28" height="28" style="image-rendering:pixelated;">
+            <path d="M2,3h12v1h-12zM2,4h1v2h-1zM13,4h1v2h-1z" fill="#5C2A2A"/>
+            <path d="M3,4h10v2h-10z" fill="#E8B878"/>
+            <path d="M2,6h2v1h-2zM4,7h2v1h-2zM6,6h2v1h-2zM8,7h2v1h-2zM10,6h2v1h-2zM12,7h2v1h-2z" fill="#7DC890"/>
+            <path d="M2,8h12v1h-12z" fill="#C24A4A"/>
+            <path d="M2,9h12v1h-12z" fill="#F5C078"/>
+            <path d="M2,10h12v3h-12z" fill="#E8B878"/>
+            <path d="M2,10h1v3h-1zM13,10h1v3h-1zM2,13h12v1h-12z" fill="#5C2A2A"/>
+          </svg>
+        </div>
+        <!-- Dinner (pizza) -->
+        <div class="wn-glyph" style="background:rgba(255,255,255,0.1);">
+          <svg viewBox="0 0 16 16" width="28" height="28" style="image-rendering:pixelated;">
+            <path d="M7,2h2v1h-2z" fill="#E89A50"/>
+            <path d="M6,3h4v1h-4z" fill="#E89A50"/>
+            <path d="M6,4h4v1h-4zM5,5h6v1h-6zM5,6h6v1h-6zM4,7h8v1h-8zM4,8h8v1h-8zM3,9h10v1h-10z" fill="#E07060"/>
+            <path d="M3,10h10v1h-10z" fill="#C8A060"/>
+            <path d="M3,11h10v1h-10z" fill="#8B6020"/>
+            <path d="M6,5h2v2h-2zM8,7h2v2h-2zM4,8h2v2h-2z" fill="#9C3838"/>
+            <path d="M7,7h1v1h-1zM9,5h1v1h-1z" fill="#F5D578"/>
+          </svg>
+        </div>
+        <!-- Snack -->
+        <div class="wn-glyph" style="background:rgba(255,255,255,0.08);">
+          <svg viewBox="0 0 16 16" width="28" height="28" style="image-rendering:pixelated;">
+            <path d="M5,2h6v1h-6zM3,3h2v1h-2zM11,3h2v1h-2zM2,4h1v8h-1zM13,4h1v8h-1zM3,12h2v1h-2zM11,12h2v1h-2zM5,13h6v1h-6z" fill="#5C3010"/>
+            <path d="M5,3h6v1h-6zM3,4h10v1h-10zM3,11h10v1h-10zM5,12h6v1h-6z" fill="#B8814A"/>
+            <path d="M3,5h10v6h-10z" fill="#D89C58"/>
+            <path d="M5,6h1v1h-1zM9,7h1v1h-1zM6,9h1v1h-1zM10,9h1v1h-1zM4,8h1v1h-1z" fill="#3C1810"/>
+            <path d="M5,5h2v1h-2z" fill="#F5D5A0"/>
+          </svg>
+        </div>
+        <!-- Correction -->
+        <div class="wn-glyph" style="background:rgba(255,255,255,0.08);">
+          <svg viewBox="0 0 16 16" width="28" height="28" style="image-rendering:pixelated;">
+            <path d="M0,7h1v3h-1z" fill="#5DCAA5"/>
+            <path d="M1,8h2v1h-2z" fill="#9B8FA0"/>
+            <path d="M3,7h9v1h-9z" fill="#A8E0CD"/>
+            <path d="M3,8h9v1h-9z" fill="#5DCAA5"/>
+            <path d="M3,9h9v1h-9z" fill="#1F4A3F"/>
+            <path d="M5,8h3v1h-3z" fill="#FFF"/>
+            <path d="M12,6h3v5h-3z" fill="#1F4A3F"/>
+            <path d="M13,6h1v3h-1z" fill="#5DCAA5"/>
+          </svg>
+        </div>
+        <!-- Treat low -->
+        <div class="wn-glyph" style="background:rgba(255,255,255,0.1);">
+          <svg viewBox="0 0 16 16" width="28" height="28" style="image-rendering:pixelated;">
+            <path d="M11,1h2v3h-2z" fill="#C24A4A"/>
+            <path d="M11,2h2v1h-2z" fill="#FFF"/>
+            <path d="M3,4h10v11h-10z" fill="#D89A9A"/>
+            <path d="M3,4h10v1h-10z" fill="#B07878"/>
+            <path d="M3,5h1v10h-1z" fill="#E8C5C5"/>
+            <path d="M12,5h1v10h-1z" fill="#B07878"/>
+            <path d="M3,14h10v1h-10z" fill="#B07878"/>
+            <path d="M4,8h8v3h-8z" fill="#FFF"/>
+            <path d="M6,9h1v1h-1zM8,9h1v1h-1z" fill="#C24A4A"/>
+          </svg>
+        </div>
+        <!-- Exercise -->
+        <div class="wn-glyph" style="background:rgba(255,255,255,0.08);">
+          <svg viewBox="0 0 16 16" width="28" height="28" style="image-rendering:pixelated;">
+            <path d="M8,2h2v2h-2z" fill="#1F4A3F"/>
+            <path d="M8,2h2v1h-2z" fill="#5DCAA5"/>
+            <path d="M7,4h3v1h-3zM6,5h3v1h-3zM6,6h2v1h-2z" fill="#5DCAA5"/>
+            <path d="M8,4h1v1h-1zM9,5h1v1h-1zM10,6h1v1h-1zM5,5h1v1h-1zM4,6h1v1h-1z" fill="#1F4A3F"/>
+            <path d="M11,7h1v5h-1zM3,7h1v5h-1z" fill="#5C3010"/>
+            <path d="M7,7h1v2h-1zM8,8h1v2h-1zM9,9h1v1h-1zM6,7h1v2h-1zM5,8h1v2h-1zM4,9h1v1h-1z" fill="#1F4A3F"/>
+            <path d="M2,10h6v1h-6zM8,10h6v1h-6z" fill="#5C3010"/>
+            <path d="M1,13h1v1h-1zM5,13h1v1h-1zM9,13h1v1h-1zM13,13h1v1h-1z" fill="#FFF"/>
+          </svg>
+        </div>
+        <!-- Period (drop) -->
+        <div class="wn-glyph" style="background:rgba(255,255,255,0.1);">
+          <svg viewBox="0 0 16 16" width="28" height="28" style="image-rendering:pixelated;">
+            <path d="M7,1h2v1h-2z" fill="#C24A4A"/>
+            <path d="M6,2h4v1h-4zM5,3h6v1h-6z" fill="#C24A4A"/>
+            <path d="M4,4h8v1h-8zM3,5h10v2h-10z" fill="#E07060"/>
+            <path d="M3,7h10v3h-10z" fill="#C24A4A"/>
+            <path d="M4,10h8v1h-8zM5,11h6v1h-6zM6,12h4v1h-4z" fill="#9C3838"/>
+            <path d="M5,5h1v1h-1zM5,6h1v2h-1zM6,5h1v1h-1z" fill="#F2B0A0"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Features -->
   <div id="features" class="section">
     <p class="section-label" data-en>Features</p>
@@ -452,10 +660,10 @@
       </div>
       <div class="feature-card">
         <div class="feature-icon fi-purple">🔔</div>
-        <h3 data-en>Configurable alarms</h3>
-        <h3 data-sv>Konfigurerbara larm</h3>
-        <p data-en>Sound and vibration alarms when glucose goes outside your range. Wakes the screen immediately, even overnight.</p>
-        <p data-sv>Ljud och vibrationslarm när glukos går utanför ditt intervall. Väcker skärmen direkt, även mitt i natten.</p>
+        <h3 data-en>Configurable alarms<span class="badge-new">Updated</span></h3>
+        <h3 data-sv>Konfigurerbara larm<span class="badge-new">Uppdaterat</span></h3>
+        <p data-en>Sound and vibration alarms with separate thresholds from your statistics range. Wakes the screen immediately, even overnight. Fallback dismiss when notification fails.</p>
+        <p data-sv>Ljud och vibrationslarm med separata tröskelvärden från ditt statistikintervall. Väcker skärmen direkt, även mitt i natten. Reservavstängning när aviseringen inte visas.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon fi-warm">📊</div>
@@ -477,6 +685,20 @@
         <h3 data-sv>Statistik och TIR</h3>
         <p data-en>Time in range, averages, estimated HbA1c, and AGP reports across 7, 14, 30, and 90 day windows.</p>
         <p data-sv>Tid i intervall, medelvärden, uppskattat HbA1c och AGP-rapporter för 7, 14, 30 och 90 dagars fönster.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon fi-rose">🌙</div>
+        <h3 data-en>Sleep analysis<span class="badge-new">New</span></h3>
+        <h3 data-sv>Sömnanalys<span class="badge-new">Nytt</span></h3>
+        <p data-en>Overnight glucose summary with time in range, dawn rise detection, and compression low identification. Knows the difference between a real low and sensor noise.</p>
+        <p data-sv>Sammanfattning av nattens glukos med tid i mål, gryningsstegringsdetektering och identifiering av kompressionslåg. Skiljer på riktiga låga värden och sensorstörningar.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon fi-teal">🏃</div>
+        <h3 data-en>Exercise response<span class="badge-new">New</span></h3>
+        <h3 data-sv>Träningsrespons<span class="badge-new">Nytt</span></h3>
+        <p data-en>See how logged exercise sessions affect your glucose. Track patterns by activity type and duration to fine-tune carbs around workouts.</p>
+        <p data-sv>Se hur loggade träningspass påverkar ditt glukos. Följ mönster per aktivitetstyp och tid för att finjustera kolhydrater kring träning.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon fi-warm">🔐</div>
@@ -609,7 +831,6 @@
       <div class="install-note" data-sv>
         Sockret distribueras direkt till supportrar och uppdateras regelbundet. <a href="https://patreon.com/Sockret" style="color: var(--teal); text-decoration: none;" target="_blank">Gå med på Patreon gratis</a> för att få information om nya versioner och interagera med utvecklaren.
       </div>
-
     </div>
   </div>
 
@@ -617,15 +838,15 @@
   <div id="download" class="cta">
     <p class="section-label" data-en>Download</p>
     <p class="section-label" data-sv>Ladda ner</p>
-    <h2 data-en>Get Sockret v0.94</h2>
-    <h2 data-sv>Hämta Sockret v0.94</h2>
+    <h2 data-en>Get Sockret v0.95</h2>
+    <h2 data-sv>Hämta Sockret v0.95</h2>
     <p data-en>Free for Android 8.0 and above. Supports Libre 2 and 3, Dexcom G6 and G7, and Nightscout.</p>
     <p data-sv>Gratis för Android 8.0 och senare. Stöder Libre 2 och 3, Dexcom G6 och G7, samt Nightscout.</p>
     <div class="hero-actions">
-      <a href="https://github.com/sockr1/Sockret/releases/download/v0.94/Sockret.v0.94.apk" class="btn-primary">
+      <a href="https://github.com/sockr1/Sockret/releases/download/v0.95/Sockret.v0.95.apk" class="btn-primary">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        <span data-en>Download APK (v0.94)</span>
-        <span data-sv>Ladda ner APK (v0.94)</span>
+        <span data-en>Download APK (v0.95)</span>
+        <span data-sv>Ladda ner APK (v0.95)</span>
       </a>
     </div>
     <p class="hero-note" style="margin-top: 16px;" data-en>Around 10 MB · Android 8.0+ · No account required</p>
@@ -647,7 +868,6 @@
       localStorage.setItem('sockret-lang', lang);
     }
 
-    // Restore saved preference, or default to Swedish if browser language is Swedish
     const saved = localStorage.getItem('sockret-lang');
     if (saved) {
       setLang(saved);
