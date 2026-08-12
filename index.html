@@ -517,9 +517,30 @@
     [data-sv] { display: none; }
     body.sv [data-en] { display: none; }
     body.sv [data-sv] { display: revert; }
+
+    /* Play Store banner (1.0.2). Sits above the nav, which is sticky, so the
+       banner scrolls away and does not eat viewport on a phone. */
+    .play-banner {
+      background: var(--accent); color: #F5F0EB;
+      text-align: center; padding: 10px 16px; font-size: 0.84rem;
+    }
+    .play-banner a {
+      color: #F5F0EB; font-weight: 600; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .play-banner a:hover { text-decoration: underline; }
+    .play-banner svg { flex-shrink: 0; }
   </style>
 </head>
 <body>
+
+  <!-- Play Store banner (1.0.2) -->
+  <div class="play-banner">
+    <a href="https://play.google.com/store/apps/details?id=com.sockret.play" target="_blank" rel="noopener">
+      <svg width="14" height="15" viewBox="0 0 24 26" fill="currentColor" aria-hidden="true"><path d="M3.6.9a1.9 1.9 0 0 0-.9 1.7v20.8c0 .7.3 1.3.9 1.7l11.1-12.1L3.6.9z"/><path d="M19.6 9.6 15.9 7.4 12.3 13l3.6 5.6 3.7-2.2c1.4-.8 1.4-2.9 0-3.8z"/><path d="M3.6.9 15.9 7.4 12.3 13 3.6.9z"/><path d="m3.6 25.1 8.7-12.1 3.6 5.6L3.6 25.1z"/></svg>
+      <span data-en>Sockret is now available on Google Play &nbsp;&rarr;</span><span data-sv>Sockret finns nu på Google Play &nbsp;&rarr;</span>
+    </a>
+  </div>
 
   <nav>
     <div class="nav-left">
@@ -553,16 +574,19 @@
       För Libre, Dexcom och Nightscout.
     </p>
     <div class="hero-actions fu d3">
-      <a href="#download" class="btn-primary">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        <span data-en>Download for Android</span><span data-sv>Ladda ner för Android</span>
+      <a href="https://play.google.com/store/apps/details?id=com.sockret.play" class="btn-primary" target="_blank" rel="noopener">
+        <svg width="14" height="15" viewBox="0 0 24 26" fill="currentColor" aria-hidden="true"><path d="M3.6.9a1.9 1.9 0 0 0-.9 1.7v20.8c0 .7.3 1.3.9 1.7l11.1-12.1L3.6.9z"/><path d="M19.6 9.6 15.9 7.4 12.3 13l3.6 5.6 3.7-2.2c1.4-.8 1.4-2.9 0-3.8z"/><path d="M3.6.9 15.9 7.4 12.3 13 3.6.9z"/><path d="m3.6 25.1 8.7-12.1 3.6 5.6L3.6 25.1z"/></svg>
+        <span data-en>Get it on Google Play</span><span data-sv>Hämta på Google Play</span>
+      </a>
+      <a href="#download" class="btn-secondary">
+        <span data-en>Download APK</span><span data-sv>Ladda ner APK</span>
       </a>
       <a href="#features" class="btn-secondary">
         <span data-en>See features</span><span data-sv>Se funktioner</span>
       </a>
     </div>
-    <p class="hero-note fu d4" data-en>Free · Android 8.0+ · Your data stays on your device · Coming to Google Play</p>
-    <p class="hero-note fu d4" data-sv>Gratis · Android 8.0+ · Din data stannar på enheten · Kommer till Google Play</p>
+    <p class="hero-note fu d4" data-en>Free · Android 8.0+ · Your data stays on your device · Now on Google Play</p>
+    <p class="hero-note fu d4" data-sv>Gratis · Android 8.0+ · Din data stannar på enheten · Finns nu på Google Play</p>
   </div>
 
   <!-- What's new in 1.0 -->
@@ -571,31 +595,29 @@
       <div>
         <div class="wn-version" data-en>What's new</div>
         <div class="wn-version" data-sv>Nyheter</div>
-        <div class="wn-title" data-en>Version 1.0, ready for launch</div>
-        <div class="wn-title" data-sv>Version 1.0, redo för lansering</div>
+        <div class="wn-title" data-en>Version 1.0.2</div>
+        <div class="wn-title" data-sv>Version 1.0.2</div>
         <div class="wn-list" data-en>
-          The Sockret Report: one PDF for your care team, clinical summary up front, every meal response, exercise session, pattern and note behind it ·
-          Cycle patterns day by day: see time in range across your whole cycle, aligned to your period, exportable as PDF ·
-          Exercise logging with live sessions, and insulin pen tracking with age warnings ·
-          A full-screen graph with a toolbox: overlay yesterday, your median, night shading, gaps and excursions ·
-          Tap any detected pattern to see the actual days behind it ·
-          Pick your garden flower, Bloom, Aster or Forget-me-not, and your own accent colour ·
-          A guided setup that gets you connected and personalised in two minutes ·
-          A notebook for questions to your care team, open questions follow along into the report ·
-          Pair a Bluetooth fingerstick meter and test results sync in on their own ·
-          Up to two years of history on your device
+          Pump tracking: pods, infusion sites and reservoirs, each with how long it has been on and how long you said it lasts &middot;
+          Where it has been: the sites your recent changes used, counted, so the one thing a paper calendar cannot tell you is on the card &middot;
+          Log a sensor start on the day it happened, not just today, for Dexcom and Nightscout &middot;
+          High contrast: darkens every label without changing anything else, and it now reaches the whole app &middot;
+          Colourblind palettes are readable in dark mode, and now cover the readings list and the alarm screen &middot;
+          Setup names the accessibility options, so you do not have to go looking for them &middot;
+          Press and hold any suggestion to take it off the list, Show all brings them back &middot;
+          A pump change tile in the logging sheet, and the tiles now fill the grid neatly &middot;
+          A fix for a crash on Android 16 that could stop readings arriving
         </div>
         <div class="wn-list" data-sv>
-          Sockretrapporten: en PDF till ditt vårdteam, klinisk sammanfattning först, varje måltidssvar, träningspass, mönster och anteckning bakom ·
-          Cykelmönster dag för dag: se tid i målområdet över hela cykeln, justerad mot din mens, exporterbar som PDF ·
-          Träningsloggning med livepass, och pennspårning med åldersvarningar ·
-          En helskärmsgraf med verktygslåda: lägg på gårdagen, din median, nattskuggning, luckor och avvikelser ·
-          Tryck på ett mönster och se dagarna bakom det ·
-          Välj din trädgårdsblomma, Bloom, Aster eller Förgätmigej, och din egen accentfärg ·
-          En guidad start som ansluter och anpassar på två minuter ·
-          En anteckningsbok för frågor till ditt vårdteam, öppna frågor följer med in i rapporten ·
-          Para ihop en blodsockermätare via Bluetooth så kommer stickvärdena in av sig själva ·
-          Upp till två års historik på din enhet
+          Pumpspårning: podar, infusionsställen och reservoarer, var och en med hur länge den suttit och hur länge du sagt att den räcker &middot;
+          Var den har suttit: ställena dina senaste byten använt, räknade, så det som en papperskalender inte kan visa finns på kortet &middot;
+          Logga en sensorstart den dag den skedde, inte bara idag, för Dexcom och Nightscout &middot;
+          Hög kontrast: gör alla texter mörkare utan att ändra något annat, och når nu hela appen &middot;
+          Färgblindhetspaletterna är läsbara i mörkt läge och täcker nu även mätvärdeslistan och larmskärmen &middot;
+          Starten nämner tillgänglighetsalternativen, så du slipper leta efter dem &middot;
+          Håll ned ett förslag för att ta bort det från listan, Visa alla tar tillbaka dem &middot;
+          En ruta för pumpbyte i loggningsvyn, och rutorna fyller nu rutnätet snyggt &middot;
+          En fix för en krasch på Android 16 som kunde stoppa inkommande mätvärden
         </div>
       </div>
     </div>
@@ -890,15 +912,19 @@
   <div id="download" class="cta">
     <p class="section-label" data-en>Download</p>
     <p class="section-label" data-sv>Ladda ner</p>
-    <h2 data-en>Get Sockret 1.0</h2>
-    <h2 data-sv>Hämta Sockret 1.0</h2>
+    <h2 data-en>Get Sockret 1.0.2</h2>
+    <h2 data-sv>Hämta Sockret 1.0.2</h2>
     <p data-en>Free for Android 8.0 and above. Supports Libre 2 and 3, Dexcom G6 and G7, and Nightscout.</p>
     <p data-sv>Gratis för Android 8.0 och senare. Stöder Libre 2 och 3, Dexcom G6 och G7, samt Nightscout.</p>
     <div class="hero-actions">
-      <a href="https://github.com/sockr1/Sockret/releases/download/v1.0/Sockret.v1.0.apk" class="btn-primary">
+      <a href="https://play.google.com/store/apps/details?id=com.sockret.play" class="btn-primary" target="_blank" rel="noopener">
+        <svg width="14" height="15" viewBox="0 0 24 26" fill="currentColor" aria-hidden="true"><path d="M3.6.9a1.9 1.9 0 0 0-.9 1.7v20.8c0 .7.3 1.3.9 1.7l11.1-12.1L3.6.9z"/><path d="M19.6 9.6 15.9 7.4 12.3 13l3.6 5.6 3.7-2.2c1.4-.8 1.4-2.9 0-3.8z"/><path d="M3.6.9 15.9 7.4 12.3 13 3.6.9z"/><path d="m3.6 25.1 8.7-12.1 3.6 5.6L3.6 25.1z"/></svg>
+        <span data-en>Get it on Google Play</span><span data-sv>Hämta på Google Play</span>
+      </a>
+      <a href="https://github.com/sockr1/Sockret/releases/download/v1.0.2/Sockret.v1.0.2.apk" class="btn-secondary">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        <span data-en>Download APK (v1.0)</span>
-        <span data-sv>Ladda ner APK (v1.0)</span>
+        <span data-en>Download APK (v1.0.2)</span>
+        <span data-sv>Ladda ner APK (v1.0.2)</span>
       </a>
     </div>
     <p class="hero-note" style="margin-top: 16px;" data-en>Around 12 MB · Android 8.0+ · No account required</p>
